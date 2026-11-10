@@ -1,8 +1,8 @@
 // 單一 Tick 的更新（SPEC 第 4 節，順序不可改）與勝負判定（第 6 節）。
-import { createRng, stochasticRound, sampleBinomial } from './rng.js?v=a75d2c77';
-import { edgeFlows, envIncome, getSpecies, hungerRatio, isStarving, seasonFactor } from './derived.js?v=a75d2c77';
-import { adultCount, addNewborns, basalNeed, hasSeedBank, isStaged, removeIndividuals } from './ages.js?v=a75d2c77';
-import { checkInvariants, DEFAULT_PARAMS } from './state.js?v=a75d2c77';
+import { createRng, stochasticRound, sampleBinomial } from './rng.js?v=2bde8609';
+import { edgeFlows, envIncome, getSpecies, hungerRatio, isStarving, seasonFactor } from './derived.js?v=2bde8609';
+import { adultCount, addNewborns, basalNeed, hasSeedBank, isStaged, removeIndividuals } from './ages.js?v=2bde8609';
+import { checkInvariants, DEFAULT_PARAMS } from './state.js?v=2bde8609';
 
 // 物種若已完全滅絕，池中殘餘能量歸入帳本 deathLoss（不留在已滅絕的物種裡）。
 // prototype：老死、餓死不帶走能量，能量留在共享能量池，所以族群縮小後倖存者平均能量會上升（負回饋）；

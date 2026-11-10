@@ -1,5 +1,5 @@
 // 推導量（SPEC 第 3 節）：由 state 計算，不存入狀態。皆為純函式。
-import { adultCount, basalNeed } from './ages.js?v=a75d2c77';
+import { adultCount, basalNeed } from './ages.js?v=2bde8609';
 
 export function getSpecies(state, id) {
   return state.species.find((s) => s.id === id);

@@ -2,10 +2,10 @@
 // 遊戲開始後先有一段「觀察期」：讓生態自己跑到第一次穩定（或逾時），玩家只能觀察；之後才出現第 1 回合的選項。
 // 選定後生態一直跑到「穩定」（或逾時）才進入下一回合；任何時候有物種滅絕就立刻失敗，全部回合結束仍沒有滅絕就勝利。
 // 全是純函式：回傳新 state，不修改傳入物件。遊戲進度存在 state.game，所有隨機都來自 state.rngState（同 seed 可重現）。
-import { createRng } from './rng.js?v=a75d2c77';
-import { tick } from './tick.js?v=a75d2c77';
-import { DEFAULT_PARAMS } from './state.js?v=a75d2c77';
-import { ecoHealth, stabilityCheck } from './health.js?v=a75d2c77';
+import { createRng } from './rng.js?v=2bde8609';
+import { tick } from './tick.js?v=2bde8609';
+import { DEFAULT_PARAMS } from './state.js?v=2bde8609';
+import { ecoHealth, stabilityCheck } from './health.js?v=2bde8609';
 
 const sp = (s, id) => s.species.find((x) => x.id === id);
 const ed = (s, predator, prey) => s.edges.find((e) => e.predator === predator && e.prey === prey);

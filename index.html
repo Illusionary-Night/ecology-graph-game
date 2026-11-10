@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>生態圖論 MVP</title>
-  <link rel="stylesheet" href="src/ui/style.css?v=a75d2c77" />
+  <link rel="stylesheet" href="src/ui/style.css?v=2bde8609" />
 </head>
 <body>
   <header id="topbar">
@@ -32,6 +32,18 @@
     節點外圍的小圓圈是年齡格（從正上方順時針，年齡由小到大；藍＝幼年、金＝成年），越亮代表該格人數越多，滑鼠移上去可看細節。
   </p>
 
+  <details id="chartPanel">
+    <summary>📈 數量變化圖（點擊展開／收合）</summary>
+    <div class="chart-controls">
+      <button id="chartMode">縱軸：相對倍數</button>
+      <button id="chartRange">時間：全部</button>
+      <span id="chartLegend" class="chart-legend"></span>
+    </div>
+    <canvas id="chartCanvas"></canvas>
+    <div id="chartCaption" class="chart-caption"></div>
+    <p class="chart-note">縱軸預設是「相對平常的倍數」（以觀察期的平均為 ×1，對數座標），所以數量差很多的物種也能放在同一張圖上比較；可切換成原始數量。藍色圓圈是你的選擇，紅色 ✕ 是滅絕。滑鼠移到圖上可以看那一刻各物種的數字，點上方的物種名稱可以顯示／隱藏。</p>
+  </details>
+
   <section id="gamePanel" hidden></section>
 
   <section id="controls">
@@ -44,6 +56,6 @@
     </div>
   </section>
 
-  <script type="module" src="src/ui/main.js?v=a75d2c77"></script>
+  <script type="module" src="src/ui/main.js?v=2bde8609"></script>
 </body>
 </html>

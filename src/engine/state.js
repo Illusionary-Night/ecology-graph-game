@@ -1,6 +1,6 @@
 // 建立初始狀態、玩家投放操作、不變量檢查。純函式：回傳新 state，不修改傳入物件。
-import { buildConfig } from './params.js?v=a75d2c77';
-import { addIndividuals, hasSeedBank, makeAges, removeIndividuals } from './ages.js?v=a75d2c77';
+import { buildConfig } from './params.js?v=2bde8609';
+import { addIndividuals, hasSeedBank, makeAges, removeIndividuals } from './ages.js?v=2bde8609';
 
 // 預設設定（依 COUNT_SCALE 建構）。params 即引擎各函式的 params 參數。
 const DEFAULT_CONFIG = buildConfig();

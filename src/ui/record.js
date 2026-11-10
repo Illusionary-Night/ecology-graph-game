@@ -1,6 +1,6 @@
 // 「複製這局紀錄」的文字產生器（純函式，不碰 DOM，可用 node --test 測試）。
 // 測試者把這段文字貼回來，開發者就能用同一個種子與選擇順序（網址參數 seed、picks）完整重現那一局。
-import { MODIFIERS, modifierLabel } from '../engine/game.js?v=a75d2c77';
+import { MODIFIERS, modifierLabel } from '../engine/game.js?v=2bde8609';
 
 const fmt = (n) => Number(n).toLocaleString('en-US');
 
