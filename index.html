@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>生態圖論 MVP</title>
+  <link rel="stylesheet" href="src/ui/style.css?v=a75d2c77" />
+</head>
+<body>
+  <header id="topbar">
+    <span>Tick <b id="tickNum">0</b><span id="winWrap"> / <span id="winTicks"></span></span></span>
+    <span id="pointsWrap">點數 <b id="points">0</b></span>
+    <span id="seasonWrap">季節 <span id="seasonBar"><i id="seasonFill"></i></span> <b id="seasonText"></b></span>
+    <span id="status" class="playing">進行中</span>
+  </header>
+
+  <details id="help">
+    <summary>怎麼玩？（第一次看請點開）</summary>
+    <p><b>這是什麼：</b>一個 7 種生物的食物網（草、灌木 → 鼠、兔、鹿 → 狐、狼）。畫面是生態的即時模擬，數字是真的在算能量與數量。</p>
+    <p><b>三選一遊戲：</b>按下方「三選一遊戲」。先有一段「觀察期」，讓生態跑到穩定，你可以先看清楚各物種的樣子；之後每個回合會出現三個選項，每個選項會改變某個生物的某項數值（例如代謝、繁殖成本、吃東西的效率）。選一個，生態就會跑到再次穩定才進入下一回合。<b>目標：6 個回合後沒有任何物種滅絕。</b>找出對生態傷害最小的選擇，選錯可能害某個物種滅絕，任何時候有物種滅絕就失敗。</p>
+    <p><b>提示按鈕：</b>預設隱藏預測。點「💡 提示」可以看每個選項的預測結果（會花 1～2 秒計算），想挑戰就保持隱藏。</p>
+    <p><b>速度：</b>回合很長，請用右下方的速度按鈕（建議 50x～500x）。<b>建議用電腦瀏覽器</b>，手機版面還沒做。</p>
+    <p><b>怎麼看圖：</b>圓圈中間是數量；外圍小圓圈是年齡格（藍＝幼年、金＝成年，越亮越多）；箭頭是捕食者 → 獵物，發光亮點往捕食者流動代表能量；百分比是這條線占該捕食者食物來源的比例；下方「自給」低於 100%（紅字）代表入不敷出。</p>
+    <p><b>回報：</b>玩到結束或覺得怪怪的，按「📋 複製這局紀錄」，把文字貼給我，我就能重現你那一局。</p>
+  </details>
+
+  <svg id="graph" viewBox="0 0 640 560" role="img" aria-label="生態圖"></svg>
+
+  <p id="legend">
+    箭頭方向：捕食者 → 獵物。發光的亮點由獵物流向捕食者，代表能量傳遞，流量越大跑得越快；
+    顏色與亮度、旁邊的百分比＝這條線占該捕食者食物來源的比例。
+    節點外圍的小圓圈是年齡格（從正上方順時針，年齡由小到大；藍＝幼年、金＝成年），越亮代表該格人數越多，滑鼠移上去可看細節。
+  </p>
+
+  <section id="gamePanel" hidden></section>
+
+  <section id="controls">
+    <div id="godPanel"></div>
+    <div class="row">
+      <button id="pauseBtn">暫停</button>
+      <span id="speedBtns" class="row"></span>
+      <button id="restartBtn">重新開始</button>
+      <button id="gameBtn">三選一遊戲</button>
+    </div>
+  </section>
+
+  <script type="module" src="src/ui/main.js?v=a75d2c77"></script>
+</body>
+</html>

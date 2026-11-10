@@ -1,0 +1,68 @@
+/* 畫面樣式：只負責外觀，不含任何模擬邏輯 */
+body { font-family: system-ui, "Noto Sans TC", sans-serif; background: #f4f1ea; color: #222; margin: 0; padding: 16px; max-width: 680px; margin-inline: auto; }
+#topbar { display: flex; gap: 24px; align-items: center; font-size: 18px; margin-bottom: 8px; }
+#status { padding: 2px 10px; border-radius: 12px; font-size: 14px; }
+#status.playing { background: #dfe9d3; }
+#status.won { background: #2f8f4e; color: #fff; }
+#status.lost { background: #c0392b; color: #fff; }
+#graph { width: 100%; background: #fff; border-radius: 8px; border: 1px solid #ddd; }
+#controls { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.god-row { display: flex; align-items: center; gap: 6px; }
+.god-row .name { width: 2.5em; font-weight: bold; }
+.god-row input { width: 7em; font: inherit; padding: 6px; text-align: center; border: 1px solid #999; border-radius: 6px; }
+.god-row button { padding: 6px 10px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: inherit; padding: 8px 16px; border: 1px solid #999; border-radius: 6px; background: #fff; cursor: pointer; }
+button:hover:not(:disabled) { background: #eee; }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+button.active { background: #333; color: #fff; }
+.node-count { font-size: 15px; font-weight: bold; fill: #fff; text-anchor: middle; dominant-baseline: central; }
+.node-label { font-size: 14px; text-anchor: middle; fill: #333; }
+.bar-text { font-size: 11px; text-anchor: middle; fill: #555; }
+/* 文字加白色描邊，被箭頭線或年齡環穿過時仍然讀得清楚 */
+.node-label, .bar-text { paint-order: stroke; stroke: #fff; stroke-width: 3.5px; stroke-linejoin: round; }
+
+/* 食物鏈能量流動：虛線沿線移動（dashoffset 增加 = 往線的起點，也就是捕食者端移動） */
+.energy-line { fill: none; stroke-dasharray: 2 12; stroke-linecap: round; animation: energy-flow 2s linear infinite; }
+@keyframes energy-flow { to { stroke-dashoffset: 14; } }
+#legend { font-size: 12px; color: #666; line-height: 1.6; margin: 8px 2px 0; }
+
+/* 季節指示：進度條 = 目前季節因子在 [1−A, 1+A] 中的位置 */
+#seasonWrap { font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+#seasonBar { display: inline-block; width: 64px; height: 10px; background: #d9d9d9; border-radius: 5px; overflow: hidden; }
+#seasonFill { display: block; height: 100%; width: 50%; background: #6bbf59; }
+
+/* 三選一遊戲 */
+#gamePanel { margin-top: 12px; padding: 12px; background: #fff; border: 1px solid #ddd; border-radius: 8px; }
+.game-head { font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+.game-note { font-size: 12px; color: #666; margin-bottom: 8px; }
+.offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media (max-width: 640px) { .offers { grid-template-columns: 1fr; } }
+.offer { border: 1px solid #bbb; border-radius: 8px; padding: 10px; background: #fafafa; display: flex; flex-direction: column; gap: 6px; }
+.offer h3 { margin: 0; font-size: 15px; }
+.offer .desc { font-size: 12px; color: #555; min-height: 2.6em; }
+.offer .warn-text { font-size: 12px; color: #c0392b; font-weight: bold; }
+.badge { display: inline-block; align-self: flex-start; padding: 2px 8px; border-radius: 10px; font-size: 12px; color: #fff; }
+.badge.good { background: #2f8f4e; }
+.badge.warn { background: #d99a00; }
+.badge.bad { background: #c0392b; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { font-size: 11px; padding: 1px 6px; border-radius: 8px; background: #eee; color: #333; }
+.chip.down { background: #fde1dd; }
+.chip.up { background: #dff0d8; }
+.chip.gone { background: #c0392b; color: #fff; }
+.result { padding: 10px; border-radius: 8px; font-weight: bold; margin: 6px 0; }
+.result.won { background: #dff0d8; }
+.result.lost { background: #f8d7d3; }
+.history { font-size: 12px; color: #555; margin-top: 8px; line-height: 1.7; }
+.progress { height: 8px; background: #e3e3e3; border-radius: 4px; overflow: hidden; margin: 4px 0 8px; }
+.progress > i { display: block; height: 100%; width: 0; background: #3498db; }
+.hint-btn { margin-top: 10px; }
+
+/* 怎麼玩、紀錄 */
+#help { margin: 8px 0; padding: 8px 12px; background: #fff; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; line-height: 1.7; }
+#help summary { cursor: pointer; font-weight: bold; }
+#help p { margin: 6px 0; }
+.record { margin-top: 10px; }
+.record-text { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; font: 12px/1.5 ui-monospace, Consolas, monospace; padding: 6px; border: 1px solid #ccc; border-radius: 6px; }
+.record-text[hidden] { display: none; } /* display:block 會蓋掉 hidden 屬性，這裡補回來 */
